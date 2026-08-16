@@ -746,7 +746,6 @@ button {
 
     z-index: 2;
 }
-
 .projects-grid {
     display: grid;
 
@@ -798,7 +797,6 @@ button {
 .project-image img {
     transform: scale(1.08);
 }
-
 .project-overlay {
     position: absolute;
 
@@ -912,7 +910,6 @@ button {
 
     border-radius: 4px;
 }
-
 .resume-section {
     padding-top: 40px;
 }
@@ -969,7 +966,6 @@ button {
 .resume-box p {
     color: var(--muted);
 }
-
 .contact-grid {
     display: grid;
 
@@ -1196,6 +1192,12 @@ button {
 
     visibility: visible;
 }
+
+
+/* =========================
+   TABLET
+========================= */
+
 @media (max-width: 1000px) {
 
     .skills-grid {
@@ -1203,6 +1205,12 @@ button {
     }
 
 }
+
+
+/* =========================
+   MOBILE NAVIGATION
+========================= */
+
 @media (max-width: 900px) {
 
     .nav-menu {
@@ -1285,6 +1293,12 @@ button {
     }
 
 }
+
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 700px) {
 
     .skills-grid {
@@ -1296,6 +1310,10 @@ button {
     }
 
 }
+
+
+
+
 @media (max-width: 600px) {
 
     .section {
@@ -1384,7 +1402,6 @@ button {
     }
 
 }
-
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
