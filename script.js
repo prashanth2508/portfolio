@@ -1,25 +1,11 @@
-// ===============================
-// MOBILE NAVIGATION
-// ===============================
-
-const menuToggle =
-    document.querySelector(".menu-toggle");
-
-const navMenu =
-    document.querySelector(".nav-menu");
-
-const navLinks =
-    document.querySelectorAll(".nav-link");
-
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector(".nav-menu");
+const navLinks = document.querySelectorAll(".nav-link");
 
 menuToggle.addEventListener("click", () => {
-
-    navMenu.classList.toggle("active");
-
-    const icon =
-        menuToggle.querySelector("i");
-
-    if (navMenu.classList.contains("active")) {
+navMenu.classList.toggle("active");
+const icon = menuToggle.querySelector("i");
+ if (navMenu.classList.contains("active")) {
 
         icon.classList.remove("fa-bars");
 
@@ -34,18 +20,13 @@ menuToggle.addEventListener("click", () => {
     }
 
 });
-
-
-// Close mobile menu when link clicked
-
 navLinks.forEach(link => {
 
     link.addEventListener("click", () => {
 
         navMenu.classList.remove("active");
 
-        const icon =
-            menuToggle.querySelector("i");
+        const icon = menuToggle.querySelector("i");
 
         icon.classList.remove("fa-xmark");
 
@@ -54,27 +35,16 @@ navLinks.forEach(link => {
     });
 
 });
-
-
-// ===============================
-// ACTIVE NAVIGATION
-// ===============================
-
-const sections =
-    document.querySelectorAll("section");
-
-
+const sections = document.querySelectorAll("section");
 window.addEventListener("scroll", () => {
 
     let current = "";
 
     sections.forEach(section => {
 
-        const sectionTop =
-            section.offsetTop - 150;
+        const sectionTop = section.offsetTop - 150;
 
-        const sectionHeight =
-            section.clientHeight;
+        const sectionHeight = section.clientHeight;
 
         if (
             window.scrollY >= sectionTop &&
@@ -82,8 +52,7 @@ window.addEventListener("scroll", () => {
             sectionTop + sectionHeight
         ) {
 
-            current =
-                section.getAttribute("id");
+            current = section.getAttribute("id");
 
         }
 
@@ -106,14 +75,7 @@ window.addEventListener("scroll", () => {
     });
 
 });
-
-
-// ===============================
-// BACK TO TOP
-// ===============================
-
-const backToTop =
-    document.getElementById("backToTop");
+const backToTop = document.getElementById("backToTop");
 
 
 window.addEventListener("scroll", () => {
@@ -142,43 +104,20 @@ backToTop.addEventListener("click", () => {
     });
 
 });
+const contactForm = document.getElementById("contactForm");
 
-
-// ===============================
-// CONTACT FORM
-// ===============================
-
-const contactForm =
-    document.getElementById("contactForm");
-
-const successMessage =
-    document.getElementById("form-success");
+const successMessage = document.getElementById("form-success");
 
 
 contactForm.addEventListener(
     "submit",
     function (event) {
-
         event.preventDefault();
-
-
-        const name =
-            document.getElementById("name");
-
-        const email =
-            document.getElementById("email");
-
-        const subject =
-            document.getElementById("subject");
-
-        const message =
-            document.getElementById("message");
-
-
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const subject = document.getElementById("subject");
+        const message = document.getElementById("message");
         let isValid = true;
-
-
-        // Clear previous errors
 
         document
             .querySelectorAll(".input-group")
@@ -199,13 +138,7 @@ contactForm.addEventListener(
 
 
         successMessage.classList.remove("show");
-
-
-        // =========================
-        // NAME
-        // =========================
-
-        if (name.value.trim() === "") {
+if (name.value.trim() === "") {
 
             showError(
                 name,
@@ -228,14 +161,7 @@ contactForm.addEventListener(
             isValid = false;
 
         }
-
-
-        // =========================
-        // EMAIL
-        // =========================
-
-        const emailPattern =
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailPattern =  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
         if (email.value.trim() === "") {
@@ -263,12 +189,6 @@ contactForm.addEventListener(
             isValid = false;
 
         }
-
-
-        // =========================
-        // SUBJECT
-        // =========================
-
         if (subject.value.trim() === "") {
 
             showError(
@@ -279,11 +199,6 @@ contactForm.addEventListener(
             isValid = false;
 
         }
-
-
-        // =========================
-        // MESSAGE
-        // =========================
 
         if (message.value.trim() === "") {
 
@@ -308,12 +223,6 @@ contactForm.addEventListener(
             isValid = false;
 
         }
-
-
-        // =========================
-        // SUCCESS
-        // =========================
-
         if (isValid) {
 
             successMessage.classList.add("show");
@@ -324,12 +233,6 @@ contactForm.addEventListener(
 
     }
 );
-
-
-// ===============================
-// SHOW ERROR
-// ===============================
-
 function showError(input, message) {
 
     const group =
@@ -346,12 +249,6 @@ function showError(input, message) {
     error.textContent = message;
 
 }
-
-
-// ===============================
-// REMOVE ERROR WHILE TYPING
-// ===============================
-
 document
     .querySelectorAll(
         ".contact-form input, .contact-form textarea"
@@ -379,12 +276,6 @@ document
         );
 
     });
-
-
-// ===============================
-// ESCAPE KEY CLOSES MOBILE MENU
-// ===============================
-
 document.addEventListener(
     "keydown",
     event => {
