@@ -3,21 +3,30 @@ const navMenu = document.querySelector(".nav-menu");
 const navLinks = document.querySelectorAll(".nav-link");
 
 menuToggle.addEventListener("click", () => {
-navMenu.classList.toggle("active");
-const icon = menuToggle.querySelector("i");
- if (navMenu.classList.contains("active")) {
 
+    navMenu.classList.toggle("active");
+
+    const icon = menuToggle.querySelector("i");
+
+    if (navMenu.classList.contains("active")) {
         icon.classList.remove("fa-bars");
-
         icon.classList.add("fa-xmark");
-
     } else {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+    }
+
+});
+navLinks.forEach(link => {
+
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        const icon = menuToggle.querySelector("i");
 
         icon.classList.remove("fa-xmark");
-
         icon.classList.add("fa-bars");
 
-    }
+    });
 
 });
 navLinks.forEach(link => {
@@ -26,7 +35,8 @@ navLinks.forEach(link => {
 
         navMenu.classList.remove("active");
 
-        const icon = menuToggle.querySelector("i");
+        const icon =
+            menuToggle.querySelector("i");
 
         icon.classList.remove("fa-xmark");
 
@@ -34,17 +44,22 @@ navLinks.forEach(link => {
 
     });
 
-});
-const sections = document.querySelectorAll("section");
+    });
+const sections =
+    document.querySelectorAll("section");
+
+
 window.addEventListener("scroll", () => {
 
     let current = "";
 
     sections.forEach(section => {
 
-        const sectionTop = section.offsetTop - 150;
+        const sectionTop =
+            section.offsetTop - 150;
 
-        const sectionHeight = section.clientHeight;
+        const sectionHeight =
+            section.clientHeight;
 
         if (
             window.scrollY >= sectionTop &&
@@ -52,7 +67,8 @@ window.addEventListener("scroll", () => {
             sectionTop + sectionHeight
         ) {
 
-            current = section.getAttribute("id");
+            current =
+                section.getAttribute("id");
 
         }
 
@@ -75,7 +91,8 @@ window.addEventListener("scroll", () => {
     });
 
 });
-const backToTop = document.getElementById("backToTop");
+const backToTop =
+    document.getElementById("backToTop");
 
 
 window.addEventListener("scroll", () => {
@@ -104,21 +121,34 @@ backToTop.addEventListener("click", () => {
     });
 
 });
-const contactForm = document.getElementById("contactForm");
+const contactForm =
+    document.getElementById("contactForm");
 
-const successMessage = document.getElementById("form-success");
+const successMessage =
+    document.getElementById("form-success");
 
 
 contactForm.addEventListener(
     "submit",
     function (event) {
-        event.preventDefault();
-        const name = document.getElementById("name");
-        const email = document.getElementById("email");
-        const subject = document.getElementById("subject");
-        const message = document.getElementById("message");
-        let isValid = true;
 
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("name");
+
+        const email =
+            document.getElementById("email");
+
+        const subject =
+            document.getElementById("subject");
+
+        const message =
+            document.getElementById("message");
+
+
+        let isValid = true;
         document
             .querySelectorAll(".input-group")
             .forEach(group => {
@@ -138,7 +168,8 @@ contactForm.addEventListener(
 
 
         successMessage.classList.remove("show");
-if (name.value.trim() === "") {
+
+        if (name.value.trim() === "") {
 
             showError(
                 name,
@@ -161,7 +192,8 @@ if (name.value.trim() === "") {
             isValid = false;
 
         }
-        const emailPattern =  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
         if (email.value.trim() === "") {
@@ -189,6 +221,7 @@ if (name.value.trim() === "") {
             isValid = false;
 
         }
+
         if (subject.value.trim() === "") {
 
             showError(
@@ -199,7 +232,6 @@ if (name.value.trim() === "") {
             isValid = false;
 
         }
-
         if (message.value.trim() === "") {
 
             showError(
