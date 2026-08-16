@@ -66,7 +66,6 @@ button {
 
 .header {
     position: fixed;
-
     top: 0;
     left: 0;
 
@@ -74,30 +73,28 @@ button {
 
     z-index: 1000;
 
-    background: rgba(8, 8, 8, 0.85);
+    background: rgba(8, 8, 8, 0.90);
 
     backdrop-filter: blur(15px);
 
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .navbar {
     height: 75px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 }
 
 .logo {
     font-size: 24px;
-
     font-weight: 800;
-
     letter-spacing: -1px;
+
+    position: relative;
+    z-index: 10001;
 }
 
 .logo span {
@@ -122,6 +119,10 @@ button {
     font-weight: 500;
 
     transition: 0.3s;
+
+    cursor: pointer;
+
+    z-index: 10001;
 }
 
 .nav-link:hover,
@@ -160,6 +161,10 @@ button {
     font-size: 25px;
 
     cursor: pointer;
+
+    position: relative;
+
+    z-index: 10002;
 }
 
 
@@ -179,6 +184,14 @@ button {
     overflow: hidden;
 }
 
+
+/*
+    IMPORTANT FIX
+
+    This background is only decorative.
+    It should NEVER receive clicks/touches.
+*/
+
 .hero-bg {
     position: absolute;
 
@@ -196,7 +209,18 @@ button {
         );
 
     filter: blur(30px);
+
+    pointer-events: none;
+
+    z-index: 0;
 }
+
+
+/*
+    IMPORTANT FIX
+
+    Hero content stays above decorative layers.
+*/
 
 .hero-content {
     display: grid;
@@ -208,6 +232,16 @@ button {
     gap: 60px;
 
     padding-top: 75px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.hero-text {
+    position: relative;
+
+    z-index: 6;
 }
 
 .hero-small {
@@ -235,8 +269,7 @@ button {
 
     color: transparent;
 
-    -webkit-text-stroke:
-        1px var(--primary);
+    -webkit-text-stroke: 1px var(--primary);
 }
 
 .hero h2 {
@@ -259,12 +292,21 @@ button {
     margin-bottom: 30px;
 }
 
+
+/* =========================
+   HERO BUTTONS
+========================= */
+
 .hero-buttons {
     display: flex;
 
     gap: 15px;
 
     flex-wrap: wrap;
+
+    position: relative;
+
+    z-index: 20;
 }
 
 .btn {
@@ -287,6 +329,12 @@ button {
     cursor: pointer;
 
     transition: 0.3s;
+
+    position: relative;
+
+    z-index: 30;
+
+    pointer-events: auto;
 }
 
 .primary-btn {
@@ -319,12 +367,21 @@ button {
     transform: translateY(-3px);
 }
 
+
+/* =========================
+   SOCIAL LINKS
+========================= */
+
 .social-links {
     display: flex;
 
     gap: 18px;
 
     margin-top: 30px;
+
+    position: relative;
+
+    z-index: 20;
 }
 
 .social-links a {
@@ -335,14 +392,19 @@ button {
 
     place-items: center;
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
     border-radius: 50%;
 
     color: #aaa;
 
     transition: 0.3s;
+
+    position: relative;
+
+    z-index: 30;
+
+    pointer-events: auto;
 }
 
 .social-links a:hover {
@@ -358,11 +420,18 @@ button {
    CODE CARD
 ========================= */
 
+.hero-card {
+    position: relative;
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
 .code-card {
     background: #101010;
 
-    border:
-        1px solid #2a2a2a;
+    border: 1px solid #2a2a2a;
 
     border-radius: 15px;
 
@@ -428,6 +497,11 @@ button {
     color: #c3e88d;
 }
 
+
+/* =========================
+   SCROLL DOWN
+========================= */
+
 .scroll-down {
     position: absolute;
 
@@ -435,8 +509,7 @@ button {
 
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     color: #777;
 
@@ -449,6 +522,10 @@ button {
     align-items: center;
 
     gap: 5px;
+
+    z-index: 2;
+
+    pointer-events: none;
 }
 
 
@@ -490,8 +567,7 @@ button {
 .about-grid {
     display: grid;
 
-    grid-template-columns:
-        0.8fr 1.2fr;
+    grid-template-columns: 0.8fr 1.2fr;
 
     gap: 80px;
 
@@ -516,8 +592,7 @@ button {
             #0c0c0c
         );
 
-    border:
-        1px solid #2d2d2d;
+    border: 1px solid #2d2d2d;
 
     border-radius: 20px;
 
@@ -536,8 +611,7 @@ button {
 
     place-items: center;
 
-    border:
-        2px solid var(--primary);
+    border: 2px solid var(--primary);
 
     color: var(--primary);
 
@@ -568,6 +642,8 @@ button {
     gap: 12px;
 
     align-items: center;
+
+    z-index: 5;
 }
 
 .experience-card strong {
@@ -632,8 +708,7 @@ button {
 .skills-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 18px;
 }
@@ -643,13 +718,11 @@ button {
 
     background: var(--card);
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
     border-radius: 14px;
 
-    transition:
-        all 0.35s ease;
+    transition: all 0.35s ease;
 
     position: relative;
 
@@ -673,14 +746,14 @@ button {
     right: -50px;
 
     transition: 0.4s;
+
+    pointer-events: none;
 }
 
 .skill-card:hover {
-    transform:
-        translateY(-8px);
+    transform: translateY(-8px);
 
-    border-color:
-        var(--primary);
+    border-color: var(--primary);
 
     box-shadow:
         0 15px 40px
@@ -711,12 +784,16 @@ button {
 
     position: relative;
 
-    z-index: 1;
+    z-index: 2;
+
+    pointer-events: none;
 }
 
 .skill-logo svg {
     width: 100%;
     height: 100%;
+
+    pointer-events: none;
 }
 
 .skill-card:hover .skill-logo {
@@ -730,7 +807,7 @@ button {
 
     position: relative;
 
-    z-index: 1;
+    z-index: 2;
 }
 
 .skill-card p {
@@ -742,7 +819,7 @@ button {
 
     position: relative;
 
-    z-index: 1;
+    z-index: 2;
 }
 
 
@@ -753,8 +830,7 @@ button {
 .projects-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 25px;
 }
@@ -762,22 +838,21 @@ button {
 .project-card {
     background: var(--card);
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
     border-radius: 14px;
 
     overflow: hidden;
 
     transition: 0.3s;
+
+    position: relative;
 }
 
 .project-card:hover {
-    transform:
-        translateY(-8px);
+    transform: translateY(-8px);
 
-    border-color:
-        var(--primary);
+    border-color: var(--primary);
 }
 
 .project-image {
@@ -795,12 +870,19 @@ button {
     object-fit: cover;
 
     transition: 0.5s;
+
+    pointer-events: none;
 }
 
 .project-card:hover
 .project-image img {
     transform: scale(1.08);
 }
+
+
+/*
+    Project overlay must be above image.
+*/
 
 .project-overlay {
     position: absolute;
@@ -820,12 +902,18 @@ button {
 
     opacity: 0;
 
+    visibility: hidden;
+
     transition: 0.3s;
+
+    z-index: 5;
 }
 
 .project-card:hover
 .project-overlay {
     opacity: 1;
+
+    visibility: visible;
 }
 
 .project-overlay a {
@@ -834,14 +922,19 @@ button {
 
     border-radius: 50%;
 
-    background:
-        var(--primary);
+    background: var(--primary);
 
     display: grid;
 
     place-items: center;
 
     transition: 0.3s;
+
+    position: relative;
+
+    z-index: 10;
+
+    pointer-events: auto;
 }
 
 .project-overlay a:hover {
@@ -852,6 +945,8 @@ button {
     padding: 25px;
 
     position: relative;
+
+    z-index: 2;
 }
 
 .project-number {
@@ -865,6 +960,8 @@ button {
     font-size: 30px;
 
     font-weight: 800;
+
+    pointer-events: none;
 }
 
 .project-content h3 {
@@ -918,8 +1015,7 @@ button {
             #101010
         );
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
     border-radius: 18px;
 
@@ -932,6 +1028,10 @@ button {
     justify-content: space-between;
 
     gap: 30px;
+
+    position: relative;
+
+    z-index: 2;
 }
 
 .resume-small {
@@ -968,8 +1068,7 @@ button {
 .contact-grid {
     display: grid;
 
-    grid-template-columns:
-        0.8fr 1.2fr;
+    grid-template-columns: 0.8fr 1.2fr;
 
     gap: 70px;
 }
@@ -1009,6 +1108,8 @@ button {
     color: var(--primary);
 
     background: #191919;
+
+    pointer-events: none;
 }
 
 .contact-item span {
@@ -1031,10 +1132,13 @@ button {
 
     padding: 30px;
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
     border-radius: 14px;
+
+    position: relative;
+
+    z-index: 2;
 }
 
 .input-group {
@@ -1059,8 +1163,7 @@ button {
 
     background: #0c0c0c;
 
-    border:
-        1px solid #2b2b2b;
+    border: 1px solid #2b2b2b;
 
     color: white;
 
@@ -1071,12 +1174,15 @@ button {
     resize: vertical;
 
     transition: 0.3s;
+
+    position: relative;
+
+    z-index: 5;
 }
 
 .input-group input:focus,
 .input-group textarea:focus {
-    border-color:
-        var(--primary);
+    border-color: var(--primary);
 }
 
 .input-group.error input,
@@ -1116,8 +1222,11 @@ button {
 .footer {
     padding: 30px 0;
 
-    border-top:
-        1px solid var(--border);
+    border-top: 1px solid var(--border);
+
+    position: relative;
+
+    z-index: 2;
 }
 
 .footer-content {
@@ -1148,6 +1257,12 @@ button {
     color: #777;
 
     transition: 0.3s;
+
+    position: relative;
+
+    z-index: 5;
+
+    pointer-events: auto;
 }
 
 .footer-social a:hover {
@@ -1172,8 +1287,7 @@ button {
 
     border-radius: 50%;
 
-    background:
-        var(--primary);
+    background: var(--primary);
 
     color: white;
 
@@ -1185,7 +1299,9 @@ button {
 
     transition: 0.3s;
 
-    z-index: 900;
+    z-index: 9998;
+
+    pointer-events: auto;
 }
 
 .back-to-top.show {
@@ -1202,15 +1318,14 @@ button {
 @media (max-width: 1000px) {
 
     .skills-grid {
-        grid-template-columns:
-            repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
 }
 
 
 /* =========================
-   MOBILE NAV
+   MOBILE NAVIGATION
 ========================= */
 
 @media (max-width: 900px) {
@@ -1224,10 +1339,11 @@ button {
 
         width: 280px;
 
-        height:
-            calc(100vh - 75px);
+        height: calc(100vh - 75px);
 
         background: #101010;
+
+        display: flex;
 
         flex-direction: column;
 
@@ -1235,10 +1351,13 @@ button {
 
         gap: 25px;
 
-        transition: 0.3s;
+        transition: right 0.3s ease;
 
-        border-left:
-            1px solid var(--border);
+        border-left: 1px solid var(--border);
+
+        z-index: 9999;
+
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -1247,6 +1366,26 @@ button {
 
     .menu-toggle {
         display: block;
+
+        position: relative;
+
+        z-index: 10002;
+
+        cursor: pointer;
+    }
+
+    .nav-link {
+        display: block;
+
+        padding: 10px 0;
+
+        font-size: 16px;
+
+        position: relative;
+
+        z-index: 10001;
+
+        cursor: pointer;
     }
 
     .hero-content {
@@ -1267,8 +1406,7 @@ button {
     }
 
     .projects-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
@@ -1281,8 +1419,7 @@ button {
 @media (max-width: 700px) {
 
     .skills-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .projects-grid {
@@ -1291,6 +1428,10 @@ button {
 
 }
 
+
+/* =========================
+   SMALL MOBILE
+========================= */
 
 @media (max-width: 600px) {
 
@@ -1341,6 +1482,10 @@ button {
 }
 
 
+/* =========================
+   VERY SMALL MOBILE
+========================= */
+
 @media (max-width: 450px) {
 
     .skills-grid {
@@ -1349,6 +1494,7 @@ button {
 
     .hero-buttons {
         flex-direction: column;
+
         align-items: stretch;
     }
 
@@ -1363,4 +1509,46 @@ button {
         font-size: 40px;
     }
 
+}
+
+
+/* =========================
+   TOUCH DEVICES
+========================= */
+
+/*
+    Prevent decorative elements from
+    blocking taps on mobile devices.
+*/
+
+@media (hover: none) {
+
+    .hero-bg,
+    .skill-card::before,
+    .scroll-down {
+        pointer-events: none;
+    }
+
+    .project-overlay {
+        pointer-events: none;
+    }
+
+    .project-overlay a {
+        pointer-events: auto;
+    }
+
+}
+
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--primary);
+
+    outline-offset: 3px;
 }
